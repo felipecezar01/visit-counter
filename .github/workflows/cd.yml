@@ -16,12 +16,10 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '18'  # Atualizado para Node.js 18
 
       - name: Instalar dependências
         run: npm install
-
-      # A etapa de build foi removida, pois não é necessária para este projeto
 
       - name: Fazer deploy na Vercel
         env:
