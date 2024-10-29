@@ -3,7 +3,7 @@ name: CD - Deploy para Vercel
 on:
   push:
     branches:
-      - main # Realiza o deploy em cada push na branch main
+      - main
 
 jobs:
   deploy:
@@ -21,10 +21,9 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
-      - name: Rodar build (caso necessário para o frontend)
-        run: npm run build
+      # A etapa de build foi removida, pois não é necessária para este projeto
 
       - name: Fazer deploy na Vercel
         env:
-          VERCEL_TOKEN: ${{ secrets.GITHUBACTIONSTESTVERCEL }} # Use o nome exato do seu secret
+          VERCEL_TOKEN: ${{ secrets.GITHUBACTIONSTESTVERCEL }}
         run: npx vercel --prod --token $VERCEL_TOKEN
