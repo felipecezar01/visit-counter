@@ -1,0 +1,29 @@
+name: CI - Rodar Testes
+
+on:
+  push:
+    branches:
+      - main
+      - feature/ci-github-actions # Inclua outras branches conforme necessário
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checar o repositório
+        uses: actions/checkout@v2
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Rodar testes com Jest
+        run: npm test
